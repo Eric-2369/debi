@@ -254,6 +254,7 @@ force_gpt=true
 efi=
 esp=106
 filesystem=ext4
+swap=
 kernel=
 cloud_kernel=false
 bpo_kernel=false
@@ -441,6 +442,15 @@ while [ $# -gt 0 ]; do
             ;;
         --filesystem)
             filesystem=$2
+            shift
+            ;;
+        --swap|--swap-size)
+            case ${2-} in
+                ''|*[!0-9]*)
+                    err 'Swap size must be a non-negative integer in MiB'
+                    ;;
+            esac
+            swap=$2
             shift
             ;;
         --kernel)
@@ -822,6 +832,15 @@ EOF
         . \
 EOF
     fi
+
+    [ -n "$swap" ] && [ "$swap" -gt 0 ] && {
+        $save_preseed << EOF
+        $swap $swap $swap linux-swap \\
+            method{ swap } \\
+            format{ } \\
+        . \\
+EOF
+    }
 
     $save_preseed << 'EOF'
         1075 1076 -1 $default_filesystem \

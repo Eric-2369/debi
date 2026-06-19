@@ -120,6 +120,7 @@ sudo reboot
 | `--disk /dev/sda` | *自动检测* | 目标磁盘 (**如果有多块磁盘，此项为必填**) |
 | `--no-disk-partitioning` | *自动分区* | 通过控制台手动分区 |
 | `--filesystem ext4` | `ext4` | 根文件系统类型 |
+| `--swap 1024` | *禁用* | swap 分区大小，单位 MiB (`0` 表示禁用 swap) |
 | `--force-gpt` | *启用* | 创建 GPT 分区表 |
 | `--no-force-gpt` | *使用 GPT* | 使用 MBR 分区表代替 GPT |
 | `--bios` | *自动检测* | 强制使用 BIOS 启动 (会创建 BIOS boot 分区) |

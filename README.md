@@ -112,6 +112,7 @@ sudo reboot
 | `--disk /dev/sda` | *auto-detect* | Target disk (**required** if multiple disks) |
 | `--no-disk-partitioning` | *auto partition* | Manual partitioning via console |
 | `--filesystem ext4` | `ext4` | Root filesystem type |
+| `--swap 1024` | *disabled* | Swap partition size in MiB (`0` disables swap) |
 | `--force-gpt` | *enabled* | Create GPT partition table |
 | `--no-force-gpt` | *use GPT* | Use MBR partition table instead |
 | `--bios` | *auto-detect* | Force BIOS boot (creates BIOS boot partition) |
